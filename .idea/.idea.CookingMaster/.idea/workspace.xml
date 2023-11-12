@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7889ba2b-afd0-43e4-8621-4a564d933864" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/ContainerCounterVisual.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/ContainerCounter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/ControllerRelated/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/PlayerInputActions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/KitchenObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/IKitchenObjectParent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/BaseCounter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/GameInput.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/CuttingCounter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/ClearCounter.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/GameInput.cs" />
+        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/KitchenObject.cs" />
+        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/BaseCounter.cs" />
+        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/ControllerRelated/PlayerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/CuttingCounter.cs" />
+        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/ContainerCounter.cs" />
+        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/ClearCounter.cs" />
+        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/ContainerCounterVisual.cs" />
+        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/IKitchenObjectParent.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="2Y1HkNj2cfr7b81yQkhqKvLWhD9" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="596" y="127" key="RiderGenerateDialog" timestamp="1699800472481">
+      <screen x="0" y="0" width="1600" height="852" />
+    </state>
+    <state x="596" y="127" key="RiderGenerateDialog/0.0.1600.852@0.0.1600.852" timestamp="1699800472481" />
+    <state x="417" y="63" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1699800669998">
+      <screen x="0" y="0" width="1600" height="852" />
+    </state>
+    <state x="417" y="63" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1600.852@0.0.1600.852" timestamp="1699800669998" />
+  </component>
+</project>

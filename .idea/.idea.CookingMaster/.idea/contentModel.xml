@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\KURO GAMING\AppData\Local\JetBrains\Rider2020.1\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\KURO GAMING\AppData\Local\JetBrains\Rider2020.1\resharper-host\Local\Transient\ReSharperHost\v201\SolutionCaches\_CookingMaster.846962072.00" t="ExcludeRecursive" />
+    <e p="D:\UNITY\Projects\OTHER_PROJECTS\CookingMaster" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="_CookingMaster" t="Include">
+          <e p="_Scripts" t="Include">
+            <e p="ControllerRelated" t="Include">
+              <e p="PlayerController.cs" t="Include" />
+            </e>
+            <e p="GamePlayRelated" t="Include">
+              <e p="BaseCounter.cs" t="Include" />
+              <e p="ClearCounter.cs" t="Include" />
+              <e p="ContainerCounter.cs" t="Include" />
+              <e p="ContainerCounterVisual.cs" t="Include" />
+              <e p="CuttingCounter.cs" t="Include" />
+              <e p="CuttingRecipeSO.cs" t="Include" />
+              <e p="GameInput.cs" t="Include" />
+              <e p="IKitchenObjectParent.cs" t="Include" />
+              <e p="KitchenObject.cs" t="Include" />
+              <e p="KitchenObjectSO.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="PlayerInputActions.cs" t="Include" />
+        <e p="Scripts" t="Include">
+          <e p="SimpleCameraController.cs" t="Include" />
+        </e>
+        <e p="TutorialInfo" t="Include">
+          <e p="Scripts" t="Include">
+            <e p="Editor" t="Include">
+              <e p="ReadmeEditor.cs" t="Include" />
+            </e>
+            <e p="Readme.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="CookingMaster.sln" t="IncludeFlat" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
