@@ -24,10 +24,19 @@ namespace _CookingMaster._Scripts.ControllerRelated
 
         private bool _isWalking;
         private Vector3 _lastInteractDir;
-        private BaseCounter _selectedCounter;
+        private WorkTableBase _selectedWorkTable;
         private KitchenObject _kitchenObject;
         /*private BaseCounter _selectedCounter;
         private KitchenObject _kitchenObject;*/
+        private void Start()
+        {
+            _gameInput.OnInteractAction += GameInputOnInteractAction;
+        }
+        private void GameInputOnInteractAction(object sender, EventArgs e)
+        {
+            if(_selectedWorkTable != null)
+                _selectedWorkTable.Interact(this);
+        }
         private void Update()
         {
             if(_playerType == PlayerType.PlayerA)
@@ -46,7 +55,34 @@ namespace _CookingMaster._Scripts.ControllerRelated
         {
             Vector3 moveDir = new Vector3(inputVector.x, 0, inputVector.y);
             float moveDistance = moveSpeed * Time.deltaTime;
+            float playerRadius = 1.7f;
+            float playerHeight = 2f;
             transform.position += moveDir * moveDistance;
+            bool canMove = !Physics.CapsuleCast(transform.position, transform.position, playerRadius, moveDir, moveDistance);
+            if (!canMove)
+            {
+                //attempt only x movement
+                Vector3 moveDirX = new Vector3(moveDir.x, 0,0).normalized;
+                canMove = moveDir.x != 0 && !Physics.CapsuleCast(transform.position, transform.position, playerRadius, moveDirX, moveDistance);
+                if (canMove) {
+                    moveDir = moveDirX;
+                }
+                else {
+                    //attempt only z movement
+                    Vector3 moveDirZ = new Vector3(0,0,moveDir.z).normalized;
+                    canMove = moveDir.z != 0 && !Physics.CapsuleCast(transform.position, transform.position, playerRadius, moveDirZ, moveDistance);
+                    if (canMove) {
+                        moveDir = moveDirZ;
+                    }
+                    else {
+                        //can't move any direction
+                    }
+                }
+            }
+            if(canMove)
+            {
+                transform.position += moveDir * moveDistance;
+            }
             transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotationSpeed);
             _isWalking = moveDir != Vector3.zero;
         }

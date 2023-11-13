@@ -12,19 +12,25 @@
             <e p="ControllerRelated" t="Include">
               <e p="PlayerController.cs" t="Include" />
             </e>
+            <e p="ElementRelated" t="Include">
+              <e p="CustomerElement.cs" t="Include" />
+            </e>
             <e p="GamePlayRelated" t="Include">
-              <e p="BaseCounter.cs" t="Include" />
-              <e p="ClearCounter.cs" t="Include" />
-              <e p="ContainerCounter.cs" t="Include" />
-              <e p="ContainerCounterVisual.cs" t="Include" />
-              <e p="CuttingCounter.cs" t="Include" />
+              <e p="ClearWorkTable.cs" t="Include" />
               <e p="CuttingRecipeSO.cs" t="Include" />
+              <e p="CuttingWorkTable.cs" t="Include" />
               <e p="GameInput.cs" t="Include" />
               <e p="IKitchenObjectParent.cs" t="Include" />
               <e p="KitchenObject.cs" t="Include" />
               <e p="KitchenObjectSO.cs" t="Include" />
+              <e p="VegWorktable.cs" t="Include" />
+              <e p="VegWorkTableVisual.cs" t="Include" />
+              <e p="WorkTableBase.cs" t="Include" />
             </e>
           </e>
+        </e>
+        <e p="Low Poly Restaurant" t="Include">
+          <e p="Read Me.txt" t="Include" />
         </e>
         <e p="PlayerInputActions.cs" t="Include" />
         <e p="Scripts" t="Include">

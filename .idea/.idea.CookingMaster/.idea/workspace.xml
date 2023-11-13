@@ -8,29 +8,37 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/ContainerCounterVisual.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/ContainerCounter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/VegWorkTableVisual.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/KitchenObjectSO.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/VegWorktable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/ControllerRelated/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/PlayerInputActions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/KitchenObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/IKitchenObjectParent.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/BaseCounter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/WorkTableBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/GameInput.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/CuttingCounter.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/ClearCounter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/CuttingWorkTable.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/ClearWorkTable.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/GameInput.cs" />
         <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/KitchenObject.cs" />
         <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/BaseCounter.cs" />
-        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/ControllerRelated/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/CuttingCounter.cs" />
         <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/ContainerCounter.cs" />
         <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/ClearCounter.cs" />
-        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/ContainerCounterVisual.cs" />
         <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/IKitchenObjectParent.cs" />
+        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/VegWorktable.cs" />
+        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/WorkTableBase.cs" />
+        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/Cutting.cs" />
+        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/Clear.cs" />
+        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/ClearWorkTable.cs" />
+        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/CuttingWorkTable.cs" />
+        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/ContainerCounterVisual.cs" />
+        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/VegWorkTableVisual.cs" />
+        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/ControllerRelated/PlayerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/GameInput.cs" />
       </list>
     </option>
   </component>
