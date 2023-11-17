@@ -16,16 +16,17 @@
               <e p="CustomerElement.cs" t="Include" />
             </e>
             <e p="GamePlayRelated" t="Include">
-              <e p="ClearWorkTable.cs" t="Include" />
-              <e p="CuttingRecipeSO.cs" t="Include" />
-              <e p="CuttingWorkTable.cs" t="Include" />
+              <e p="ChoppedSO.cs" t="Include" />
+              <e p="ChoppingCounter.cs" t="Include" />
+              <e p="CounterVisual.cs" t="Include" />
               <e p="GameInput.cs" t="Include" />
-              <e p="IKitchenObjectParent.cs" t="Include" />
+              <e p="ICounterBase.cs" t="Include" />
+              <e p="Interfaces" t="Include">
+                <e p="ISelectedCounterVisual.cs" t="Include" />
+              </e>
               <e p="KitchenObject.cs" t="Include" />
               <e p="KitchenObjectSO.cs" t="Include" />
-              <e p="VegWorktable.cs" t="Include" />
-              <e p="VegWorkTableVisual.cs" t="Include" />
-              <e p="WorkTableBase.cs" t="Include" />
+              <e p="VegCounter.cs" t="Include" />
             </e>
           </e>
         </e>

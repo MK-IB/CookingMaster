@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace _CookingMaster._Scripts.ControllerRelated
 {
-    public class PlayerController : MonoBehaviour, IKitchenObjectParent
+    public class PlayerController : MonoBehaviour
     {
         enum PlayerType
         {
@@ -20,22 +20,41 @@ namespace _CookingMaster._Scripts.ControllerRelated
         private float rotationSpeed = 10f;
         [SerializeField] private float moveSpeed = 7f;
         [SerializeField] private LayerMask countersLayerMask;
-        [SerializeField] private Transform kitchenObjectHoldPoint;
+        [SerializeField] private List<Transform> kitchenObjectHoldPointsList;
+        //list of kitchen objects the player has picked up (limit = 2) 
+        private List<KitchenObject> _pickedUpKitchenObjectList = new List<KitchenObject>();
 
         private bool _isWalking;
         private Vector3 _lastInteractDir;
-        private WorkTableBase _selectedWorkTable;
+        private ICounterBase _selectedCounter;
         private KitchenObject _kitchenObject;
+
+        private float _rayDist;
         /*private BaseCounter _selectedCounter;
         private KitchenObject _kitchenObject;*/
+        public List<KitchenObject> PickedUpKitchenObjects
+        {
+            get => _pickedUpKitchenObjectList;
+            set => _pickedUpKitchenObjectList = value;
+        }
+
         private void Start()
         {
-            _gameInput.OnInteractAction += GameInputOnInteractAction;
+            if(_playerType == PlayerType.PlayerA)
+                _gameInput.OnInteractActionA += GameInputOnInteractActionA;
+            if(_playerType == PlayerType.PlayerB)
+                _gameInput.OnInteractActionB += GameInputOnInteractActionB;
+            _rayDist = transform.localScale.x / 2 + 0.25f;
         }
-        private void GameInputOnInteractAction(object sender, EventArgs e)
+        private void GameInputOnInteractActionA(object sender, EventArgs e)
         {
-            if(_selectedWorkTable != null)
-                _selectedWorkTable.Interact(this);
+            if(_selectedCounter != null)
+                _selectedCounter.Interact(this);
+        }
+        private void GameInputOnInteractActionB(object sender, EventArgs e)
+        {
+            if(_selectedCounter != null)
+                _selectedCounter.Interact(this);
         }
         private void Update()
         {
@@ -55,11 +74,11 @@ namespace _CookingMaster._Scripts.ControllerRelated
         {
             Vector3 moveDir = new Vector3(inputVector.x, 0, inputVector.y);
             float moveDistance = moveSpeed * Time.deltaTime;
-            float playerRadius = 1.7f;
-            float playerHeight = 2f;
-            transform.position += moveDir * moveDistance;
-            bool canMove = !Physics.CapsuleCast(transform.position, transform.position, playerRadius, moveDir, moveDistance);
-            if (!canMove)
+            /*float playerRadius = 1.7f;
+            float playerHeight = 2f;*/
+            Debug.DrawRay(transform.position, moveDir * _rayDist, Color.magenta);
+            bool canMove = !Physics.Raycast(transform.position, moveDir, _rayDist);
+            /*if (!canMove)
             {
                 //attempt only x movement
                 Vector3 moveDirX = new Vector3(moveDir.x, 0,0).normalized;
@@ -78,23 +97,71 @@ namespace _CookingMaster._Scripts.ControllerRelated
                         //can't move any direction
                     }
                 }
-            }
+            }*/
             if(canMove)
             {
                 transform.position += moveDir * moveDistance;
+                transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotationSpeed);
             }
-            transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotationSpeed);
             _isWalking = moveDir != Vector3.zero;
         }
 
         void Interaction(Vector2 interactionDir)
         {
-            
+            Vector3 moveDir = new Vector3(interactionDir.x, 0, interactionDir.y);
+            if (moveDir != Vector3.zero)
+            {
+                _lastInteractDir = moveDir;
+            }
+            if (Physics.Raycast(transform.position, _lastInteractDir, out RaycastHit raycastHit, _rayDist))
+            {
+                if (raycastHit.transform.TryGetComponent(out ICounterBase baseWorkTable))
+                {
+                    if (baseWorkTable != _selectedCounter)
+                    {
+                        SetSelectedCounter(baseWorkTable);
+                        baseWorkTable.ShowSelectedCounterVisual(true);
+                    }
+                }else
+                {
+                    SetSelectedCounter(null);
+                }
+
+                if (raycastHit.collider.CompareTag("Finish"))
+                {
+                    raycastHit.collider.GetComponent<Collider>().enabled = false;
+                }
+            }else {
+                if(_selectedCounter != null) 
+                    _selectedCounter.ShowSelectedCounterVisual(false);
+                SetSelectedCounter(null);
+            }
+        }
+        void SetSelectedCounter(ICounterBase selectedCounter)
+        {
+            _selectedCounter = selectedCounter;
+            /*OnSelectedCounterChanged?.Invoke(this, new OnSelectedCounterChangedEventArgs
+            {
+                selectedCounter = _selectedCounter
+            });*/
         }
 
+        public void SpawnKitchenObjects(KitchenObjectSO kitchenObjectSo)
+        {
+            //spawning the kitchen objects in players hold position
+            if (_pickedUpKitchenObjectList.Count >= kitchenObjectHoldPointsList.Count) return;
+            KitchenObject kitchenObject = Instantiate(kitchenObjectSo.prefab).GetComponent<KitchenObject>();
+            _pickedUpKitchenObjectList.Add(kitchenObject);
+            kitchenObject.transform.parent = kitchenObjectHoldPointsList[_kitchenObjHoldCounter++];
+            kitchenObject.transform.localPosition = Vector3.zero;
+        }
+
+        private int _kitchenObjHoldCounter;
         public Transform GetKitchenObjectFollowTransform()
         {
-            return kitchenObjectHoldPoint;
+            if(_kitchenObjHoldCounter < kitchenObjectHoldPointsList.Count) 
+                return kitchenObjectHoldPointsList[_kitchenObjHoldCounter++];
+            return null;
         }
 
         public void SetKitchenObject(KitchenObject kitchenObject)
@@ -110,6 +177,11 @@ namespace _CookingMaster._Scripts.ControllerRelated
         public void ClearKitchenObject()
         {
             _kitchenObject = null;
+        }
+
+        public int GetHoldPoints()
+        {
+            return kitchenObjectHoldPointsList.Count;
         }
 
         public bool HasKitchenObject()

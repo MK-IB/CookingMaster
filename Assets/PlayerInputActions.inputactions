@@ -24,9 +24,18 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Interact",
+                    "name": "InteractA",
                     "type": "Button",
                     "id": "9aa109b3-a19b-469b-a092-98bc36a538c0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "InteractB",
+                    "type": "Button",
+                    "id": "b2d93a2a-f613-4311-9cd6-10b9ee4295e7",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -96,18 +105,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7f1dd2a4-a932-468f-9112-80296733cfea",
-                    "path": "<Keyboard>/j",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Interact",
+                    "action": "InteractA",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -165,6 +163,17 @@
                     "action": "Move B",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "57e22def-e0b3-4b87-8a85-112ca4945588",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "InteractB",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

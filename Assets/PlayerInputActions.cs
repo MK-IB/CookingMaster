@@ -46,9 +46,18 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Interact"",
+                    ""name"": ""InteractA"",
                     ""type"": ""Button"",
                     ""id"": ""9aa109b3-a19b-469b-a092-98bc36a538c0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""InteractB"",
+                    ""type"": ""Button"",
+                    ""id"": ""b2d93a2a-f613-4311-9cd6-10b9ee4295e7"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -118,18 +127,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Interact"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""7f1dd2a4-a932-468f-9112-80296733cfea"",
-                    ""path"": ""<Keyboard>/j"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Interact"",
+                    ""action"": ""InteractA"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -187,6 +185,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""Move B"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""57e22def-e0b3-4b87-8a85-112ca4945588"",
+                    ""path"": ""<Keyboard>/j"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""InteractB"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -197,7 +206,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_MoveA = m_Player.FindAction("Move A", throwIfNotFound: true);
         m_Player_MoveB = m_Player.FindAction("Move B", throwIfNotFound: true);
-        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        m_Player_InteractA = m_Player.FindAction("InteractA", throwIfNotFound: true);
+        m_Player_InteractB = m_Player.FindAction("InteractB", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -259,14 +269,16 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_MoveA;
     private readonly InputAction m_Player_MoveB;
-    private readonly InputAction m_Player_Interact;
+    private readonly InputAction m_Player_InteractA;
+    private readonly InputAction m_Player_InteractB;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
         public PlayerActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @MoveA => m_Wrapper.m_Player_MoveA;
         public InputAction @MoveB => m_Wrapper.m_Player_MoveB;
-        public InputAction @Interact => m_Wrapper.m_Player_Interact;
+        public InputAction @InteractA => m_Wrapper.m_Player_InteractA;
+        public InputAction @InteractB => m_Wrapper.m_Player_InteractB;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -282,9 +294,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @MoveB.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveB;
                 @MoveB.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveB;
                 @MoveB.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveB;
-                @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
-                @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
-                @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @InteractA.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteractA;
+                @InteractA.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteractA;
+                @InteractA.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteractA;
+                @InteractB.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteractB;
+                @InteractB.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteractB;
+                @InteractB.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteractB;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -295,9 +310,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @MoveB.started += instance.OnMoveB;
                 @MoveB.performed += instance.OnMoveB;
                 @MoveB.canceled += instance.OnMoveB;
-                @Interact.started += instance.OnInteract;
-                @Interact.performed += instance.OnInteract;
-                @Interact.canceled += instance.OnInteract;
+                @InteractA.started += instance.OnInteractA;
+                @InteractA.performed += instance.OnInteractA;
+                @InteractA.canceled += instance.OnInteractA;
+                @InteractB.started += instance.OnInteractB;
+                @InteractB.performed += instance.OnInteractB;
+                @InteractB.canceled += instance.OnInteractB;
             }
         }
     }
@@ -306,6 +324,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     {
         void OnMoveA(InputAction.CallbackContext context);
         void OnMoveB(InputAction.CallbackContext context);
-        void OnInteract(InputAction.CallbackContext context);
+        void OnInteractA(InputAction.CallbackContext context);
+        void OnInteractB(InputAction.CallbackContext context);
     }
 }

@@ -4,28 +4,26 @@ using UnityEngine;
 public class KitchenObject : MonoBehaviour
 {
     [SerializeField] private KitchenObjectSO kitchenObjectSo;
+    [SerializeField] private GameObject choppedKoPrefab;
 
-    private IKitchenObjectParent _kitchenObjectParent;
+    public GameObject ChoppedKo
+    {
+        get => choppedKoPrefab;
+        set => choppedKoPrefab = value;
+    }
 
     public KitchenObjectSO GetKitchenObjectSO()
     {
         return kitchenObjectSo;
     }
 
-    public void SetKitchenObjectParent(IKitchenObjectParent kitchenObjectParent)
+    public void SetKitchenObjectParent()
     {
-        if (_kitchenObjectParent != null)
-            _kitchenObjectParent.ClearKitchenObject();
-
-        _kitchenObjectParent = kitchenObjectParent;
-        if(kitchenObjectParent.HasKitchenObject())
-            Debug.LogError("IKitchenObjectParent already has a kitchen Object");
-        kitchenObjectParent.SetKitchenObject(this);
-        transform.parent = _kitchenObjectParent.GetKitchenObjectFollowTransform();
+        
         transform.localPosition = Vector3.zero;
     }
 
-    public IKitchenObjectParent GetKitchenObjectParent()
+    /*public IKitchenObjectParent GetKitchenObjectParent()
     {
         return _kitchenObjectParent;
     }
@@ -34,13 +32,13 @@ public class KitchenObject : MonoBehaviour
     {
         _kitchenObjectParent.ClearKitchenObject();
         Destroy(gameObject);
-    }
+    }*/
 
-    public static KitchenObject SpawnKitchenObject(KitchenObjectSO kitchenObjectSo, IKitchenObjectParent kitchenObjectParent)
+    public static KitchenObject SpawnKitchenObject(KitchenObjectSO kitchenObjectSo)
     {
         Transform kitchenObjectTransform = Instantiate(kitchenObjectSo.prefab);
         KitchenObject kitchenObject = kitchenObjectTransform.GetComponent<KitchenObject>();
-        kitchenObject.SetKitchenObjectParent(kitchenObjectParent);
+        //kitchenObject.SetKitchenObjectParent(kitchenObjectParent);
         return kitchenObject;
     }
 }
