@@ -8,17 +8,19 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/CounterVisual.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/KitchenObjectSO.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/Interfaces/ISelectedCounterVisual.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/ChoppedSO.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/KitchenObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/ICounterBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/TrashCounter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/CounterVisual.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/ChoppingCounter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/VegCounter.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/ChoppedSO.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/ControllerRelated/UiController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.2.0/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/ControllerRelated/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/PlayerInputActions.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/KitchenObject.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/ICounterBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/GameInput.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -43,11 +45,13 @@
         <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/Interfaces/ISelectedCounterVisual.cs" />
         <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/ICounterBase.cs" />
         <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/VegCounter.cs" />
-        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/CounterVisual.cs" />
-        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/ControllerRelated/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/ChoppedSO.cs" />
         <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/KitchenObjectSO.cs" />
         <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/KitchenObject.cs" />
+        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/ControllerRelated/UiController.cs" />
+        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/CounterVisual.cs" />
+        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/TrashCounter.cs" />
+        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/ControllerRelated/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/ChoppingCounter.cs" />
       </list>
     </option>
@@ -82,10 +86,10 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="596" y="127" key="RiderGenerateDialog" timestamp="1700065684968">
+    <state x="596" y="127" key="RiderGenerateDialog" timestamp="1700303608792">
       <screen x="0" y="0" width="1600" height="852" />
     </state>
-    <state x="596" y="127" key="RiderGenerateDialog/0.0.1600.852@0.0.1600.852" timestamp="1700065684968" />
+    <state x="596" y="127" key="RiderGenerateDialog/0.0.1600.852@0.0.1600.852" timestamp="1700303608792" />
     <state x="417" y="63" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1699800669998">
       <screen x="0" y="0" width="1600" height="852" />
     </state>

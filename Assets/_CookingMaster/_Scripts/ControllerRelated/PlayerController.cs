@@ -17,12 +17,14 @@ namespace _CookingMaster._Scripts.ControllerRelated
         [SerializeField] private GameInput _gameInput;
         [SerializeField] private PlayerType _playerType;
         
-        private float rotationSpeed = 10f;
+        private float rotationSpeed = 30f;
         [SerializeField] private float moveSpeed = 7f;
         [SerializeField] private LayerMask countersLayerMask;
         [SerializeField] private List<Transform> kitchenObjectHoldPointsList;
+
         //list of kitchen objects the player has picked up (limit = 2) 
-        private List<KitchenObject> _pickedUpKitchenObjectList = new List<KitchenObject>();
+        private Queue<KitchenObject> _pickedUpKitchenObjectQueue = new Queue<KitchenObject>();
+        private List<string> _saladCombination = new List<string>();
 
         private bool _isWalking;
         private Vector3 _lastInteractDir;
@@ -30,12 +32,23 @@ namespace _CookingMaster._Scripts.ControllerRelated
         private KitchenObject _kitchenObject;
 
         private float _rayDist;
-        /*private BaseCounter _selectedCounter;
-        private KitchenObject _kitchenObject;*/
-        public List<KitchenObject> PickedUpKitchenObjects
+        private int _holdCapacity= 2;
+        public Queue<KitchenObject> PickedUpKitchenObjects
         {
-            get => _pickedUpKitchenObjectList;
-            set => _pickedUpKitchenObjectList = value;
+            get => _pickedUpKitchenObjectQueue;
+            set => _pickedUpKitchenObjectQueue = value;
+        }
+
+        public List<string> SaladCombination
+        {
+            get => _saladCombination;
+            set => _saladCombination = value;
+        }
+
+        public List<Transform> KitchenObjectHoldPointsList
+        {
+            get => kitchenObjectHoldPointsList;
+            set => kitchenObjectHoldPointsList = value;
         }
 
         private void Start()
@@ -44,7 +57,7 @@ namespace _CookingMaster._Scripts.ControllerRelated
                 _gameInput.OnInteractActionA += GameInputOnInteractActionA;
             if(_playerType == PlayerType.PlayerB)
                 _gameInput.OnInteractActionB += GameInputOnInteractActionB;
-            _rayDist = transform.localScale.x / 2 + 0.25f;
+            _rayDist = transform.localScale.x / 2 + 0.1f;
         }
         private void GameInputOnInteractActionA(object sender, EventArgs e)
         {
@@ -145,15 +158,26 @@ namespace _CookingMaster._Scripts.ControllerRelated
                 selectedCounter = _selectedCounter
             });*/
         }
-
         public void SpawnKitchenObjects(KitchenObjectSO kitchenObjectSo)
         {
             //spawning the kitchen objects in players hold position
-            if (_pickedUpKitchenObjectList.Count >= kitchenObjectHoldPointsList.Count) return;
+            if (_pickedUpKitchenObjectQueue.Count >= _holdCapacity) return;
             KitchenObject kitchenObject = Instantiate(kitchenObjectSo.prefab).GetComponent<KitchenObject>();
-            _pickedUpKitchenObjectList.Add(kitchenObject);
+            _pickedUpKitchenObjectQueue.Enqueue(kitchenObject);
             kitchenObject.transform.parent = kitchenObjectHoldPointsList[_kitchenObjHoldCounter++];
             kitchenObject.transform.localPosition = Vector3.zero;
+            
+            if(_playerType == PlayerType.PlayerA)
+                UiController.instance.AddVegHolderPanelA(kitchenObject.GetKitchenObjectSO().sprite);
+            else UiController.instance.AddVegHolderPanelB(kitchenObject.GetKitchenObjectSO().sprite);
+        }
+
+        public void UpdatePlayerHoldPositions()
+        {
+            _kitchenObjHoldCounter--;
+            if(_playerType == PlayerType.PlayerA)
+                UiController.instance.RemoveVegHolderPanelA();
+            else UiController.instance.RemoveVegHolderPanelB();
         }
 
         private int _kitchenObjHoldCounter;
@@ -182,6 +206,17 @@ namespace _CookingMaster._Scripts.ControllerRelated
         public int GetHoldPoints()
         {
             return kitchenObjectHoldPointsList.Count;
+        }
+
+        //put the kitchen object into trash
+        public void PutKitchenObjectIntoTrash()
+        {
+            KitchenObject kitchenObject = _pickedUpKitchenObjectQueue.Peek();
+            kitchenObject.transform.parent = null;
+            kitchenObject.gameObject.SetActive(false);
+            //Destroy(kitchenObject.gameObject);
+            UpdatePlayerHoldPositions();
+            _pickedUpKitchenObjectQueue.Dequeue();
         }
 
         public bool HasKitchenObject()

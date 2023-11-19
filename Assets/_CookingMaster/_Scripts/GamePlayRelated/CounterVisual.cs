@@ -23,7 +23,7 @@ namespace _CookingMaster._Scripts.GamePlayRelated
             
         }
 
-        public void VegCounterOnPlayerInteracted()
+        public void AnimateOnPlayerInteracted()
         {
             _animator.SetTrigger(OPEN_CLOSE);
         }

@@ -9,24 +9,48 @@ namespace _CookingMaster._Scripts.GamePlayRelated
     public class ChoppingCounter : MonoBehaviour, ICounterBase
     {
         [SerializeField] private CounterVisual counterVisual;
-        [SerializeField] private List<Transform> kitchenObjectHoldPointsList;
+        [SerializeField] private Transform kitchenObjectHoldPoint;
         [SerializeField] private List<Transform> kitchenObjectChoppedPointsList;
-        private List<KitchenObject> _heldKitchenObjectsList = new List<KitchenObject>();
+        public List<KitchenObject> _heldKitchenObjectsList = new List<KitchenObject>();
+        public List<string> _saladCombination = new List<string>();
+        private List<Transform> _choppedItemsList = new List<Transform>();
 
         [SerializeField] private Animator knifeAnimator;
 
         private int _koHeldCounter;
         public void Interact(PlayerController playerController)
         {
-            if (_koHeldCounter >= kitchenObjectHoldPointsList.Count) return;
-            //get the player's kitchen objects list
-            List<KitchenObject> playerHeldKitchenObjects = playerController.PickedUpKitchenObjects;
-            playerHeldKitchenObjects.Reverse();
-            Transform kitchenObject = playerHeldKitchenObjects[_koHeldCounter].transform;
-            kitchenObject.parent = kitchenObjectHoldPointsList[_koHeldCounter];
-            kitchenObject.localPosition = Vector3.zero;
-            _heldKitchenObjectsList.Add(playerHeldKitchenObjects[_koHeldCounter]);
-            StartCoroutine(ChopKitchenObject());
+            //get the player's first kitchen object
+            Queue<KitchenObject> playerPickedKOs = playerController.PickedUpKitchenObjects;
+            //if playr has vegetables, chop it
+            Debug.Log("Player KO = " +  playerPickedKOs.Count);
+            Debug.Log("Counter KO = " +  _heldKitchenObjectsList.Count);
+            if(playerPickedKOs.Count > 0)
+            {
+                if (_koHeldCounter >= kitchenObjectChoppedPointsList.Count) return;
+                KitchenObject playerHeldKitchenObject = playerPickedKOs.Dequeue();
+                Transform kitchenObjectTransform = playerHeldKitchenObject.transform;
+                kitchenObjectTransform.parent = kitchenObjectHoldPoint;
+                kitchenObjectTransform.localPosition = Vector3.zero;
+                _heldKitchenObjectsList.Add(playerHeldKitchenObject);
+                _saladCombination.Add(playerHeldKitchenObject.GetKitchenObjectSO().objectName);
+                playerController.UpdatePlayerHoldPositions();
+                StartCoroutine(ChopKitchenObject());
+                return;
+            }
+            //if player doesn't have veg. and chopping board has chopped items, give it to the player
+            if (_heldKitchenObjectsList.Count >= 1 && playerPickedKOs.Count == 0)
+            {
+                playerController.SaladCombination = _saladCombination;
+                List<Transform> playerPickupPoints = playerController.KitchenObjectHoldPointsList;
+                for (int i = 0; i < _heldKitchenObjectsList.Count; i++)
+                {
+                    Transform kitchenObject = _choppedItemsList[i];
+                    kitchenObject.parent = playerPickupPoints[i];
+                    kitchenObject.localPosition = Vector3.zero;
+                }
+                _heldKitchenObjectsList.Clear();
+            }
         }
 
         IEnumerator ChopKitchenObject()
@@ -40,6 +64,7 @@ namespace _CookingMaster._Scripts.GamePlayRelated
             Transform choppedKO = Instantiate(choppedKitchenKO.gameObject, choppedKoHoldPoint.position, Quaternion.identity).transform;
             choppedKO.parent = choppedKoHoldPoint;
             choppedKO.localPosition = Vector3.zero;
+            _choppedItemsList.Add(choppedKO);
             heldKitchenObject.gameObject.SetActive(false);
             while (Vector3.Distance(choppedKitchenKO.position, choppedKoHoldPoint.position) <= 0.1f)
             {
@@ -50,7 +75,6 @@ namespace _CookingMaster._Scripts.GamePlayRelated
 
         public void ShowSelectedCounterVisual(bool b)
         {
-            Debug.Log("Selecetd");
             counterVisual.ShowSelectedCounterVisual(b);
         }
     }

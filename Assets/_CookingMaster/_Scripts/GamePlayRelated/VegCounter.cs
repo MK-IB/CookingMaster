@@ -17,7 +17,7 @@ namespace _CookingMaster._Scripts.GamePlayRelated
                 //KitchenObject.SpawnKitchenObject(kitchenObjectSO);
                 playerController.SpawnKitchenObjects(kitchenObjectSO);
                 //play the counter open and close animation on VegCounterVisual.cs
-                counterVisual.VegCounterOnPlayerInteracted();
+                counterVisual.AnimateOnPlayerInteracted();
             }
         }
 
