@@ -1,18 +1,40 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using _CookingMaster._Scripts.ControllerRelated;
 using UnityEngine;
 
-public class PlateCounter : MonoBehaviour
+namespace _CookingMaster._Scripts.GamePlayRelated
 {
-    // Start is called before the first frame update
-    void Start()
+    public class PlateCounter : MonoBehaviour, ICounterBase
     {
+        [SerializeField] private Transform kitchenObjectHoldPoint;
+        [SerializeField] private CounterVisual counterVisual;
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private int _koHeldCounter;
+        public void Interact(PlayerController playerController)
+        {
+            Queue<KitchenObject> playerPickedKOs = playerController.PickedUpKitchenObjects;
+            if(playerPickedKOs.Count > 0 && kitchenObjectHoldPoint.childCount == 0)
+            {
+                if (kitchenObjectHoldPoint.childCount > 0) return;
+                KitchenObject playerHeldKitchenObject = playerPickedKOs.Dequeue();
+                Transform kitchenObjectTransform = playerHeldKitchenObject.transform;
+                kitchenObjectTransform.parent = kitchenObjectHoldPoint;
+                kitchenObjectTransform.localPosition = Vector3.zero;
+                playerController.UpdatePlayerHoldPositions();
+                return;
+            }
+            if (kitchenObjectHoldPoint.childCount > 0 && playerPickedKOs.Count >= 0)
+            {
+                if (playerPickedKOs.Count >= playerController.HoldCapacity) return;
+                KitchenObject kitchenObject = kitchenObjectHoldPoint.GetChild(0).GetComponent<KitchenObject>();
+                playerController.SpawnKitchenObjects(kitchenObject.GetKitchenObjectSO());
+                kitchenObject.transform.parent = null;
+                kitchenObject.gameObject.SetActive(false);
+            }
+        }
+        public void ShowSelectedCounterVisual(bool b)
+        {
+            counterVisual.ShowSelectedCounterVisual(b);
+        }
     }
 }

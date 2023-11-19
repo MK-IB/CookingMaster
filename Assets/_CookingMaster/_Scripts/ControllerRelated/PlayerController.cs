@@ -24,7 +24,7 @@ namespace _CookingMaster._Scripts.ControllerRelated
 
         //list of kitchen objects the player has picked up (limit = 2) 
         private Queue<KitchenObject> _pickedUpKitchenObjectQueue = new Queue<KitchenObject>();
-        private List<string> _saladCombination = new List<string>();
+        public List<string> _saladCombination = new List<string>();
 
         private bool _isWalking;
         private Vector3 _lastInteractDir;
@@ -50,6 +50,8 @@ namespace _CookingMaster._Scripts.ControllerRelated
             get => kitchenObjectHoldPointsList;
             set => kitchenObjectHoldPointsList = value;
         }
+
+        public int HoldCapacity => _holdCapacity;
 
         private void Start()
         {

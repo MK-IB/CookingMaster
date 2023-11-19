@@ -27,6 +27,7 @@
               </e>
               <e p="KitchenObject.cs" t="Include" />
               <e p="KitchenObjectSO.cs" t="Include" />
+              <e p="PlateCounter.cs" t="Include" />
               <e p="TrashCounter.cs" t="Include" />
               <e p="VegCounter.cs" t="Include" />
             </e>
