@@ -14,8 +14,15 @@ namespace _CookingMaster._Scripts.ControllerRelated
             PlayerB
         }
 
+        public enum PlayerActionState
+        {
+            Moving,
+            Chopping
+        }
+
         [SerializeField] private GameInput _gameInput;
         [SerializeField] private PlayerType _playerType;
+        public PlayerActionState _actionState;
         
         private float rotationSpeed = 30f;
         [SerializeField] private float moveSpeed = 7f;
@@ -24,9 +31,11 @@ namespace _CookingMaster._Scripts.ControllerRelated
 
         //list of kitchen objects the player has picked up (limit = 2) 
         private Queue<KitchenObject> _pickedUpKitchenObjectQueue = new Queue<KitchenObject>();
-        public List<string> _saladCombination = new List<string>();
+        private List<string> saladCombinationNames = new List<string>();
+        public List<Transform> heldSaladComboList = new List<Transform>();
 
-        private bool _isWalking;
+
+        private bool _canMove;
         private Vector3 _lastInteractDir;
         private ICounterBase _selectedCounter;
         private KitchenObject _kitchenObject;
@@ -39,16 +48,22 @@ namespace _CookingMaster._Scripts.ControllerRelated
             set => _pickedUpKitchenObjectQueue = value;
         }
 
-        public List<string> SaladCombination
+        public List<string> SaladCombinationNames
         {
-            get => _saladCombination;
-            set => _saladCombination = value;
+            get => saladCombinationNames;
+            set => saladCombinationNames = value;
         }
 
         public List<Transform> KitchenObjectHoldPointsList
         {
             get => kitchenObjectHoldPointsList;
             set => kitchenObjectHoldPointsList = value;
+        }
+
+        public List<Transform> HeldSaladComboList
+        {
+            get => heldSaladComboList;
+            set => heldSaladComboList = value;
         }
 
         public int HoldCapacity => _holdCapacity;
@@ -71,8 +86,15 @@ namespace _CookingMaster._Scripts.ControllerRelated
             if(_selectedCounter != null)
                 _selectedCounter.Interact(this);
         }
+
+        public void CheckPlayerActionState()
+        {
+            _canMove = _actionState == PlayerActionState.Moving;
+        }
         private void Update()
         {
+            CheckPlayerActionState();
+            if (!_canMove) return; //don't move if the player state is chopping
             if(_playerType == PlayerType.PlayerA)
             {
                 Move(_gameInput.GetMoveDirectionPlayerA());
@@ -89,11 +111,11 @@ namespace _CookingMaster._Scripts.ControllerRelated
         {
             Vector3 moveDir = new Vector3(inputVector.x, 0, inputVector.y);
             float moveDistance = moveSpeed * Time.deltaTime;
-            /*float playerRadius = 1.7f;
-            float playerHeight = 2f;*/
+            float playerRadius = .35f;
+            //float playerHeight = 2f;
             Debug.DrawRay(transform.position, moveDir * _rayDist, Color.magenta);
-            bool canMove = !Physics.Raycast(transform.position, moveDir, _rayDist);
-            /*if (!canMove)
+            bool canMove = !Physics.CapsuleCast(transform.position, transform.position, playerRadius, moveDir, moveDistance);
+            if (!canMove)
             {
                 //attempt only x movement
                 Vector3 moveDirX = new Vector3(moveDir.x, 0,0).normalized;
@@ -112,13 +134,13 @@ namespace _CookingMaster._Scripts.ControllerRelated
                         //can't move any direction
                     }
                 }
-            }*/
+            }
             if(canMove)
             {
                 transform.position += moveDir * moveDistance;
                 transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotationSpeed);
             }
-            _isWalking = moveDir != Vector3.zero;
+            _canMove = moveDir != Vector3.zero;
         }
 
         void Interaction(Vector2 interactionDir)
