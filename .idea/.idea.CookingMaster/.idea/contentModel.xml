@@ -10,25 +10,29 @@
         <e p="_CookingMaster" t="Include">
           <e p="_Scripts" t="Include">
             <e p="ControllerRelated" t="Include">
+              <e p="GameController.cs" t="Include" />
+              <e p="MainController.cs" t="Include" />
               <e p="PlayerController.cs" t="Include" />
               <e p="UiController.cs" t="Include" />
             </e>
             <e p="ElementRelated" t="Include">
               <e p="CustomerElement.cs" t="Include" />
               <e p="CustomerWaitingSliderElement.cs" t="Include" />
+              <e p="GameOver.cs" t="Include" />
             </e>
             <e p="GamePlayRelated" t="Include">
               <e p="ChoppedSO.cs" t="Include" />
               <e p="ChoppingCounter.cs" t="Include" />
               <e p="CounterVisual.cs" t="Include" />
               <e p="GameInput.cs" t="Include" />
-              <e p="ICounterBase.cs" t="Include" />
               <e p="Interfaces" t="Include">
+                <e p="ICounterBase.cs" t="Include" />
                 <e p="ISelectedCounterVisual.cs" t="Include" />
               </e>
               <e p="KitchenObject.cs" t="Include" />
               <e p="KitchenObjectSO.cs" t="Include" />
               <e p="PlateCounter.cs" t="Include" />
+              <e p="ScoresAndTimer.cs" t="Include" />
               <e p="ServeCounter.cs" t="Include" />
               <e p="TrashCounter.cs" t="Include" />
               <e p="VegCounter.cs" t="Include" />

@@ -34,12 +34,27 @@ namespace _CookingMaster._Scripts.ElementRelated
             get => _canAcceptOrder;
             set => _canAcceptOrder = value;
         }
+        private void OnEnable()
+        {
+            MainController.GameStateChanged += On_GameStateChanged;
+        }
+        private void OnDisable()
+        {
+            MainController.GameStateChanged -= On_GameStateChanged;
+        }
+        void On_GameStateChanged(GameState newState, GameState oldState)
+        {
+            if(newState==GameState.LevelStart)
+            {
+                //customer walks to the waiting counter when game starts
+                SetCustomerDestination(waitPoint);
+            }
+
+        }
 
         private void Start()
         {
             _navMeshAgent = GetComponent<NavMeshAgent>();
-            //customer walks to the waiting counter
-            SetCustomerDestination(waitPoint);
             //Assign 3 vegetables to the customer
             while (_demandedSaladComboNames.Count < 3)
             {
@@ -62,6 +77,7 @@ namespace _CookingMaster._Scripts.ElementRelated
         private bool _serveCounterReached;
         private void Update()
         {
+            if(currentAssignedPoint == null) return;
             if (!_navMeshAgent.pathPending && _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance)
             {
                 transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, currentAssignedPoint.localEulerAngles,

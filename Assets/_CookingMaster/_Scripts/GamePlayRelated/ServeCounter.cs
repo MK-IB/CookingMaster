@@ -54,9 +54,12 @@ namespace _CookingMaster._Scripts.GamePlayRelated
             HashSet<string> setA = new HashSet<string>(playerHeldSaladKOs);
             HashSet<string> setB = new HashSet<string>(demandedKONames);
 
+            if (playerHeldSaladKOs.Count <= 0) return;
             if (playerHeldSaladKOs.Count != demandedKONames.Count)
             {
                 _customerElement.ExitDisappointed();
+                //subtract 10 points on disappointing the customer
+                playerController.UpdatePlayerScores(-10);
                 return;
             }
 
@@ -64,12 +67,14 @@ namespace _CookingMaster._Scripts.GamePlayRelated
             {
                //customer takes the salad and exits
                _customerElement.ExitSatisfied(playerController);
+               playerController.UpdatePlayerScores(25);
                //reset the server counter
                ResetSaladVisual();
             }
             else
             {
                 _customerElement.ExitDisappointed();
+                playerController.UpdatePlayerScores(-10);
             }
         }
 

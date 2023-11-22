@@ -8,7 +8,7 @@ namespace _CookingMaster._Scripts.ControllerRelated
 {
     public class PlayerController : MonoBehaviour
     {
-        enum PlayerType
+        public enum PlayerType
         {
             PlayerA,
             PlayerB
@@ -23,6 +23,7 @@ namespace _CookingMaster._Scripts.ControllerRelated
         [SerializeField] private GameInput _gameInput;
         [SerializeField] private PlayerType _playerType;
         public PlayerActionState _actionState;
+        private ScoresAndTimer _scoresAndTimer;
         
         private float rotationSpeed = 30f;
         [SerializeField] private float moveSpeed = 7f;
@@ -42,6 +43,13 @@ namespace _CookingMaster._Scripts.ControllerRelated
 
         private float _rayDist;
         private int _holdCapacity= 2;
+
+        public PlayerType PlayersType
+        {
+            get => _playerType;
+            set => _playerType = value;
+        }
+
         public Queue<KitchenObject> PickedUpKitchenObjects
         {
             get => _pickedUpKitchenObjectQueue;
@@ -75,6 +83,7 @@ namespace _CookingMaster._Scripts.ControllerRelated
             if(_playerType == PlayerType.PlayerB)
                 _gameInput.OnInteractActionB += GameInputOnInteractActionB;
             _rayDist = transform.localScale.x / 2 + 0.1f;
+            _scoresAndTimer = GetComponent<ScoresAndTimer>();
         }
         private void GameInputOnInteractActionA(object sender, EventArgs e)
         {
@@ -177,10 +186,6 @@ namespace _CookingMaster._Scripts.ControllerRelated
         void SetSelectedCounter(ICounterBase selectedCounter)
         {
             _selectedCounter = selectedCounter;
-            /*OnSelectedCounterChanged?.Invoke(this, new OnSelectedCounterChangedEventArgs
-            {
-                selectedCounter = _selectedCounter
-            });*/
         }
         public void SpawnKitchenObjects(KitchenObjectSO kitchenObjectSo)
         {
@@ -205,33 +210,6 @@ namespace _CookingMaster._Scripts.ControllerRelated
         }
 
         private int _kitchenObjHoldCounter;
-        public Transform GetKitchenObjectFollowTransform()
-        {
-            if(_kitchenObjHoldCounter < kitchenObjectHoldPointsList.Count) 
-                return kitchenObjectHoldPointsList[_kitchenObjHoldCounter++];
-            return null;
-        }
-
-        public void SetKitchenObject(KitchenObject kitchenObject)
-        {
-            _kitchenObject = kitchenObject;
-        }
-
-        public KitchenObject GetKitchenObject()
-        {
-            return _kitchenObject;
-        }
-
-        public void ClearKitchenObject()
-        {
-            _kitchenObject = null;
-        }
-
-        public int GetHoldPoints()
-        {
-            return kitchenObjectHoldPointsList.Count;
-        }
-
         //put the kitchen object into trash
         public void PutKitchenObjectIntoTrash()
         {
@@ -241,8 +219,15 @@ namespace _CookingMaster._Scripts.ControllerRelated
             //Destroy(kitchenObject.gameObject);
             UpdatePlayerHoldPositions();
             _pickedUpKitchenObjectQueue.Dequeue();
+            UpdatePlayerScores(-5);
         }
 
+        public void UpdatePlayerScores(int val)
+        {
+            _scoresAndTimer.UpdateScore(val);
+        }
+
+        public int Score => _scoresAndTimer.Score;
         public bool HasKitchenObject()
         {
             return _kitchenObject != null;

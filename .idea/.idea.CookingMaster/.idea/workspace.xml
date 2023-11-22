@@ -12,20 +12,24 @@
     <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/Interfaces/ISelectedCounterVisual.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/ElementRelated/CustomerElement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/ChoppedSO.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/ScoresAndTimer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/ElementRelated/CustomerWaitingSliderElement.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/ElementRelated/GameOver.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/KitchenObject.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/ICounterBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/TrashCounter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41914444-499F-4996-A3E6-AF79CF6C1FDB/83/89f221d2/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/CounterVisual.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/ChoppingCounter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/PlateCounter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/VegCounter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/ControllerRelated/UiController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/ControllerRelated/MainController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.2.0/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/ControllerRelated/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/PlayerInputActions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/GameInput.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/ServeCounter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/ControllerRelated/GameController.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -50,18 +54,22 @@
         <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/ICounterBase.cs" />
         <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/VegCounter.cs" />
         <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/ChoppedSO.cs" />
-        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/ControllerRelated/UiController.cs" />
         <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/CounterVisual.cs" />
         <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/TrashCounter.cs" />
         <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/PlateCounter.cs" />
         <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/KitchenObjectSO.cs" />
         <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/ElementRelated/SliderController.cs" />
         <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/KitchenObject.cs" />
-        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/ServeCounter.cs" />
-        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/ElementRelated/CustomerElement.cs" />
-        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/ControllerRelated/PlayerController.cs" />
-        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/ElementRelated/CustomerWaitingSliderElement.cs" />
         <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/ChoppingCounter.cs" />
+        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/ElementRelated/CustomerWaitingSliderElement.cs" />
+        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/ServeCounter.cs" />
+        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/ControllerRelated/UiController.cs" />
+        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/ElementRelated/CustomerElement.cs" />
+        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/ElementRelated/GameOver.cs" />
+        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/ControllerRelated/MainController.cs" />
+        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/ScoresAndTimer.cs" />
+        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/ControllerRelated/PlayerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/ControllerRelated/GameController.cs" />
       </list>
     </option>
   </component>

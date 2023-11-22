@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using _CookingMaster._Scripts.ControllerRelated;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -57,6 +58,13 @@ namespace _CookingMaster._Scripts.ElementRelated
             if (_waitingSlider.value <= 0)
             {
                 _customerElement.ExitDisappointed();
+                
+                //decrease score of both the players
+                PlayerController[] players = FindObjectsOfType<PlayerController>();
+                for (int i = 0; i < players.Length; i++)
+                {
+                    players[i].UpdatePlayerScores(-10);
+                }
             }
         }
     }

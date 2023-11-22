@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,11 +15,17 @@ namespace _CookingMaster._Scripts.ControllerRelated
         [SerializeField] private Transform playerA, playerB;
         [SerializeField] private Vector3 panelFollowOffset;
         [SerializeField] private Sprite defaultSprite;
+        [SerializeField] private GameObject mainMenu;
         private Camera _camera;
 
         private int _holderPanelImageCounterA, _holderPanelImageCounterB;
         private Queue<Sprite> _vegHeldQueueA = new Queue<Sprite>();
         private Queue<Sprite> _vegHeldQueueB = new Queue<Sprite>();
+
+        [Header("SCORES AND TIMERS")] public TextMeshProUGUI scoreTextA;
+        public TextMeshProUGUI scoreTextB;
+        public TextMeshProUGUI timerTextA;
+        public TextMeshProUGUI timerTextB;
 
         private void Awake()
         {
@@ -29,7 +36,22 @@ namespace _CookingMaster._Scripts.ControllerRelated
         {
             _camera = Camera.main;
         }
+        private void OnEnable()
+        {
+            MainController.GameStateChanged += GameManager_GameStateChanged;
+        }
+        private void OnDisable()
+        {
+            MainController.GameStateChanged -= GameManager_GameStateChanged;
+        }
+        void GameManager_GameStateChanged(GameState newState, GameState oldState)
+        {
+            if(newState==GameState.Create)
+            {
+                ShowMainMenu();
+            }
 
+        }
         private void Update()
         {
             Vector3 screenPointA = _camera.WorldToScreenPoint(playerA.position);
@@ -38,6 +60,10 @@ namespace _CookingMaster._Scripts.ControllerRelated
             vegHolderPanelB.position = screenPointB + panelFollowOffset;
         }
 
+        public void ShowMainMenu()
+        {
+            mainMenu.SetActive(true);
+        }
         public void AddVegHolderPanelA(Sprite sprite)
         {
             _vegHeldQueueA.Enqueue(sprite);
