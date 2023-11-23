@@ -75,6 +75,7 @@ namespace _CookingMaster._Scripts.GamePlayRelated
             {
                 _customerElement.ExitDisappointed();
                 playerController.UpdatePlayerScores(-10);
+                ResetSaladVisual();
             }
         }
 

@@ -28,20 +28,18 @@ namespace _CookingMaster._Scripts.ElementRelated
 
         private void Update()
         {
-            if (waitingStarted)
-            {
-                StartWaiting();
-            }
+            if (!waitingStarted) return; 
+            StartWaiting();
         }
 
         public void StartWaiting()
         {
-            if(!waitingStarted) return;
             StartCoroutine(DecreaseSliderValue());
             waitingStarted = false;
         }
         IEnumerator DecreaseSliderValue()
         {
+            Debug.Log("Decreasing slider...");
             float currentTime = 0f;
             float startValue = _waitingSlider.value;
             float endValue = 0f;
@@ -63,7 +61,7 @@ namespace _CookingMaster._Scripts.ElementRelated
                 PlayerController[] players = FindObjectsOfType<PlayerController>();
                 for (int i = 0; i < players.Length; i++)
                 {
-                    players[i].UpdatePlayerScores(-10);
+                    players[i].UpdatePlayerScores(-10.0f);
                 }
             }
         }

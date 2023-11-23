@@ -7,6 +7,10 @@ using UnityEngine.UI;
 
 namespace _CookingMaster._Scripts.ControllerRelated
 {
+    /*
+     * Has the reference of most of the UIs present in the game
+     * Updates different panels, also subscribes to Events in the MainController.cs
+     */
     public class UiController : MonoBehaviour
     {
         public static UiController instance;

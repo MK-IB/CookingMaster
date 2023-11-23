@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 namespace _CookingMaster._Scripts.ControllerRelated
 {
+    /*
+     * subscribes to the MainController.cs for level related state changes
+     * Controls level restart, win, fail and navigation next level, etc
+     */
     public class GameController : MonoBehaviour
     {
         public static GameController instance;
@@ -32,6 +36,7 @@ namespace _CookingMaster._Scripts.ControllerRelated
         {
             if(newState==GameState.GameOver)
             {
+                //game over panel is shown
                 gameOverScript.gameObject.SetActive(true);
                 CheckForWinner();
             }
@@ -44,12 +49,6 @@ namespace _CookingMaster._Scripts.ControllerRelated
                 gameOverScript.ShowRank(_playerA);
             else gameOverScript.ShowRank(_playerB);
         }
-
-        private void Update()
-        {
-             
-        }
-        
 
         public void On_ReplayButtonClicked()
         {

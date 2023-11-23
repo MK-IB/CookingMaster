@@ -161,12 +161,12 @@ namespace _CookingMaster._Scripts.ControllerRelated
             }
             if (Physics.Raycast(transform.position, _lastInteractDir, out RaycastHit raycastHit, _rayDist))
             {
-                if (raycastHit.transform.TryGetComponent(out ICounterBase baseWorkTable))
+                if (raycastHit.transform.TryGetComponent(out ICounterBase baseCounter))
                 {
-                    if (baseWorkTable != _selectedCounter)
+                    if (baseCounter != _selectedCounter)
                     {
-                        SetSelectedCounter(baseWorkTable);
-                        baseWorkTable.ShowSelectedCounterVisual(true);
+                        SetSelectedCounter(baseCounter);
+                        baseCounter.ShowSelectedCounterVisual(true);
                     }
                 }else
                 {
@@ -222,12 +222,12 @@ namespace _CookingMaster._Scripts.ControllerRelated
             UpdatePlayerScores(-5);
         }
 
-        public void UpdatePlayerScores(int val)
+        public void UpdatePlayerScores(float val)
         {
             _scoresAndTimer.UpdateScore(val);
         }
 
-        public int Score => _scoresAndTimer.Score;
+        public float Score => _scoresAndTimer.Score;
         public bool HasKitchenObject()
         {
             return _kitchenObject != null;

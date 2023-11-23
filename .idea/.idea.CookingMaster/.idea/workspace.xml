@@ -61,15 +61,15 @@
         <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/ElementRelated/SliderController.cs" />
         <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/KitchenObject.cs" />
         <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/ChoppingCounter.cs" />
-        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/ElementRelated/CustomerWaitingSliderElement.cs" />
-        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/ServeCounter.cs" />
-        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/ControllerRelated/UiController.cs" />
-        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/ElementRelated/CustomerElement.cs" />
         <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/ElementRelated/GameOver.cs" />
+        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/ServeCounter.cs" />
         <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/ControllerRelated/MainController.cs" />
-        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/ScoresAndTimer.cs" />
-        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/ControllerRelated/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/ControllerRelated/GameController.cs" />
+        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/ControllerRelated/UiController.cs" />
+        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/GamePlayRelated/ScoresAndTimer.cs" />
+        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/ElementRelated/CustomerWaitingSliderElement.cs" />
+        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/ElementRelated/CustomerElement.cs" />
+        <option value="$PROJECT_DIR$/Assets/_CookingMaster/_Scripts/ControllerRelated/PlayerController.cs" />
       </list>
     </option>
   </component>

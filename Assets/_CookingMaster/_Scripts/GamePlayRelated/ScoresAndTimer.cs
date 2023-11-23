@@ -8,13 +8,13 @@ namespace _CookingMaster._Scripts.GamePlayRelated
     public class ScoresAndTimer : MonoBehaviour
     {
         [SerializeField] private float timeLeft; 
-        [SerializeField] private int score;
+        [SerializeField] private float score;
         
         private TextMeshProUGUI _scoreText, _timerText;
         private PlayerController _playerController;
         private bool _timeUp;
 
-        public int Score
+        public float Score
         {
             get => score;
             set => score = value;
@@ -43,7 +43,7 @@ namespace _CookingMaster._Scripts.GamePlayRelated
             }
         }
 
-        public void UpdateScore(int value)
+        public void UpdateScore(float value)
         {
             score += value;
             _scoreText.text = Mathf.FloorToInt(score).ToString();

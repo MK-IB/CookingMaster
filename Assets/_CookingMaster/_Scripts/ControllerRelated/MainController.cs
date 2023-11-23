@@ -7,6 +7,9 @@ using UnityEngine;
 
 namespace _CookingMaster._Scripts.ControllerRelated
 {
+    /*
+     * Controls the state change of the game
+     */
     public enum GameState
     {
         None,

@@ -23,6 +23,7 @@ namespace _CookingMaster._Scripts.ElementRelated
         [SerializeField] private Transform exitPoint, waitPoint, currentAssignedPoint;
         [SerializeField] private Image reactionImage;
         [SerializeField] private Sprite angryEmoji, happyEmoji;
+        [SerializeField] private float approachDelay;
 
         private NavMeshAgent _navMeshAgent;
 
@@ -34,22 +35,27 @@ namespace _CookingMaster._Scripts.ElementRelated
             get => _canAcceptOrder;
             set => _canAcceptOrder = value;
         }
+
         private void OnEnable()
         {
             MainController.GameStateChanged += On_GameStateChanged;
         }
+
         private void OnDisable()
         {
             MainController.GameStateChanged -= On_GameStateChanged;
         }
+
         void On_GameStateChanged(GameState newState, GameState oldState)
         {
-            if(newState==GameState.LevelStart)
+            if (newState == GameState.LevelStart)
             {
                 //customer walks to the waiting counter when game starts
-                SetCustomerDestination(waitPoint);
+                DOVirtual.DelayedCall(approachDelay, () =>
+                {
+                    SetCustomerDestination(waitPoint);
+                });
             }
-
         }
 
         private void Start()
@@ -75,30 +81,28 @@ namespace _CookingMaster._Scripts.ElementRelated
         }
 
         private bool _serveCounterReached;
+
         private void Update()
         {
-            if(currentAssignedPoint == null) return;
+            if (currentAssignedPoint == null) return;
             if (!_navMeshAgent.pathPending && _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance)
             {
                 transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, currentAssignedPoint.localEulerAngles,
                     Time.deltaTime * 5);
-                _sliderElement.waitingStarted = true;
             }
 
             //approach to serve counter and show the demanded salad
-            Debug.DrawRay(transform.position, transform.forward * 1, Color.green);
+            if (_serveCounterReached) return;
             RaycastHit hit;
             if (Physics.Raycast(transform.position, transform.forward, out hit, 1))
             {
                 if (hit.transform.TryGetComponent(out ServeCounter serveCounter))
                 {
-                    if(!_serveCounterReached)
-                    {
-                        Debug.Log("Serve counter encountered..");
-                        serveCounter.CustomerElement = this;
-                        serveCounter.SetDemandedSaladCombo(demandedKitchebObjects);
-                        _serveCounterReached = true;
-                    }
+                    Debug.Log("Serve counter encountered..");
+                    serveCounter.CustomerElement = this;
+                    serveCounter.SetDemandedSaladCombo(demandedKitchebObjects);
+                    _serveCounterReached = true;
+                    _sliderElement.waitingStarted = true;
                 }
             }
         }
@@ -113,7 +117,7 @@ namespace _CookingMaster._Scripts.ElementRelated
         {
             StartCoroutine(SetEmojiAndExit(happyEmoji));
             //assign salad to the customer
-            List<Transform> playerHeldSaladCombo = playerController.HeldSaladComboList; 
+            List<Transform> playerHeldSaladCombo = playerController.HeldSaladComboList;
             ServeCustomer(playerHeldSaladCombo);
             playerHeldSaladCombo.Clear();
             //add points to the player wo served
@@ -137,7 +141,7 @@ namespace _CookingMaster._Scripts.ElementRelated
             servedSaladCombo = playerHeldServedSaladCombo;
             for (int i = 0; i < servedSaladCombo.Count; i++)
             {
-                Transform saladItem = servedSaladCombo[i]; 
+                Transform saladItem = servedSaladCombo[i];
                 saladItem.parent = kitchenObjectHoldPointsList[i];
                 saladItem.localPosition = Vector3.zero;
             }

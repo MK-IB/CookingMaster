@@ -1253,7 +1253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 891c67efec030a44c925c03b5190a1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 75
+  duration: 120
   waitingStarted: 0
   _customerElement: {fileID: 3205937638370733804}
   decreasingSpeed: 1
