@@ -21,4 +21,4 @@ Each customer will ask for unique salad combination to the players.
             - Would add certain point to the player more than the normal customer serving point.
             - Would also increase the player's timer.
 
-    - Reset and New Round: I would have a button on the Game Over panel which would reload the level after saving the player's score in the PlayerPrefs
+- Reset and New Round: I would have a button on the Game Over panel which would reload the level after saving the player's score in the Unity PlayerPrefs.
